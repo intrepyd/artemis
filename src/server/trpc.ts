@@ -4,8 +4,13 @@ import { type CreateNextContextOptions } from "@trpc/server/adapters/next";
 import superjson from "superjson";
 import { ZodError } from "zod";
 
-export const createTRPCContext = (options: CreateNextContextOptions) => {
-  return { auth: getAuth(options.req) };
+import { model } from "~/model";
+import { connect } from "~/utils/database";
+
+export const createTRPCContext = async (options: CreateNextContextOptions) => {
+  await connect();
+
+  return { auth: getAuth(options.req), model: model };
 };
 
 const t = initTRPC.context<typeof createTRPCContext>().create({

@@ -5,7 +5,7 @@ import { buttonVariants, Layout } from "~/components";
 import { api } from "~/utils/api";
 
 export default function HomePage() {
-  const hello = api.example.hello.useQuery({ text: "from tRPC" });
+  const hello = api.user.hello.useQuery({ text: "from tRPC" });
 
   return (
     <Layout>
