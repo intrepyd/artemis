@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "commit": "commit",
+    "release": "release-it",
+    "husky": "husky install",
     "build": "next build",
     "dev": "next dev",
     "start": "next start",
@@ -58,18 +61,36 @@
     "superjson": "1.12.2",
     "tailwind-merge": "^1.11.0",
     "tailwindcss-animate": "^1.0.5",
+    "ares": "github:intrepyd/ares#0.1.4",
     "zod": "^3.21.4"
   },
   "devDependencies": {
     "@types/react": "^18.0.31",
     "@types/react-dom": "^18.0.11",
-    "ares": "github:intrepyd/ares#0.1.4",
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.21",
     "tailwindcss": "^3.3.1",
-    "typescript": "^5.0.3"
+    "typescript": "^4.9.5"
   },
   "ct3aMetadata": {
     "initVersion": "7.10.1"
+  },
+  "release-it": {
+    "git": {
+      "commitMessage": "chore: release v${version}"
+    },
+    "github": {
+      "release": true
+    },
+    "npm": {
+      "skipChecks": true,
+      "publish": false
+    },
+    "plugins": {
+      "@release-it/conventional-changelog": {
+        "preset": "conventionalcommits",
+        "infile": "CHANGELOG.md"
+      }
+    }
   }
 }
